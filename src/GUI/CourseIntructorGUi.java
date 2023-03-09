@@ -34,8 +34,9 @@ public class CourseIntructorGUi extends javax.swing.JPanel {
         for (CourseIntructorDTO sp : listonl) {
             String CourseID = sp.getCourseID();
             String url = sp.getPersonID();
-            
-            DFT.addRow(new Object[]{CourseID, url});
+            String lastname = sp.getLastname();
+            String firtname = sp.getFirtname();
+            DFT.addRow(new Object[]{CourseID, url, lastname, firtname});
         }
      }
      private void xuLySua() {
@@ -76,7 +77,9 @@ public class CourseIntructorGUi extends javax.swing.JPanel {
             if(nv.getCourseID().equalsIgnoreCase(CourseID)){
                 String course = nv.getCourseID();
                 String url = nv.getPersonID();
-                DFT.addRow(new Object[]{course, url});
+                String lastname = nv.getLastname();
+                String firtname = nv.getFirtname();
+                DFT.addRow(new Object[]{course, url, lastname, firtname});
                 vitri = 1;
             }
            
@@ -182,13 +185,13 @@ public class CourseIntructorGUi extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Course ID", "Person ID"
+                "Course ID", "Person ID", "Lastname", "Firstname"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {

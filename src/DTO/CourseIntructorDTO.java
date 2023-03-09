@@ -11,13 +11,16 @@ package DTO;
 public class CourseIntructorDTO {
     private String CourseID;
     private String PersonID;
+    private String Lastname;
+    private String Firtname;
 
-    public CourseIntructorDTO(String CourseID, String PersonID) {
+    public CourseIntructorDTO(String CourseID, String PersonID, String Lastname, String Firtname) {
         this.CourseID = CourseID;
         this.PersonID = PersonID;
+        this.Lastname = Lastname;
+        this.Firtname = Firtname;
     }
     public CourseIntructorDTO(){}
-
     public String getCourseID() {
         return CourseID;
     }
@@ -33,5 +36,22 @@ public class CourseIntructorDTO {
     public void setPersonID(String PersonID) {
         this.PersonID = PersonID;
     }
+
+    public String getLastname() {
+        return Lastname;
+    }
+
+    public void setLastname(String Lastname) {
+        this.Lastname = Lastname;
+    }
+
+    public String getFirtname() {
+        return Firtname;
+    }
+
+    public void setFirtname(String Firtname) {
+        this.Firtname = Firtname;
+    }
+    
     
 }

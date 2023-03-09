@@ -64,14 +64,15 @@ public class CourseIntructorDAL {
         List<CourseIntructorDTO> list = new ArrayList<CourseIntructorDTO>();
         try {
             Connection con = myConnect.getConnection();
-            String sql = "SELECT * FROM courseinstructor ";
+            String sql = "SELECT courseinstructor.CourseID, courseinstructor.PersonID, person.Lastname, person.Firstname FROM courseinstructor, person WHERE courseinstructor.PersonID=person.PersonID  ";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 CourseIntructorDTO sp = new CourseIntructorDTO();
                 sp.setCourseID(rs.getString("CourseID"));
                 sp.setPersonID(rs.getString("PersonID"));
-                
+                sp.setLastname(rs.getString("Lastname"));
+                sp.setFirtname(rs.getString("Firstname"));
                 list.add(sp);
             }
         } catch (SQLException e) {
@@ -99,7 +100,7 @@ public class CourseIntructorDAL {
     List<CourseIntructorDTO> list = new ArrayList<>();    
     try {        
             Connection con = myConnect.getConnection();
-            String sql = "SELECT * FROM courseinstructor WHERE CourseID ='"+CourseID+"%'"; 
+            String sql = "SELECT courseinstructor.CourseID, courseinstructor.PersonID, person.Lastname, person.Firstname FROM courseinstructor, person WHERE courseinstructor.PersonID = person.PersonID AND courseinstructor.CourseID ='"+CourseID+"%'" ; 
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             if(rs != null){
@@ -107,6 +108,8 @@ public class CourseIntructorDAL {
                     CourseIntructorDTO nv = new CourseIntructorDTO();
                     nv.setCourseID(rs.getString("CourseID"));
                     nv.setPersonID(rs.getString("PersonID"));  
+                    nv.setLastname(rs.getString("Lastname"));
+                    nv.setFirtname(rs.getString("Firstname"));
                     list.add(nv);                     
                 }   
             }
